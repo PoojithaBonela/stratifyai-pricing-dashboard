@@ -109,12 +109,12 @@ export default function PricingSection() {
 
             <div className="relative max-w-7xl mx-auto px-6 md:px-8">
                 {/* Header Section */}
-                <div className="flex flex-col items-center text-center mb-16">
+                <div className="flex flex-col items-center text-center mb-16 relative z-30">
                     <div className="mb-12">
-                        <h2 className="text-3xl md:text-5xl font-semibold text-[#1a1f36] mb-4 tracking-tight whitespace-nowrap font-['Outfit',sans-serif]">
+                        <h2 className="text-3xl md:text-5xl font-semibold text-[#1a1f36] mb-4 tracking-tight font-['Outfit',sans-serif]">
                             Built to Grow With Your Strategy
                         </h2>
-                        <p className="text-lg text-[#697386]">
+                        <p className="text-lg text-[#697386] max-w-2xl mx-auto">
                             Choose a plan that fits your current needs and scale when you're ready.
                         </p>
                     </div>
@@ -141,7 +141,7 @@ export default function PricingSection() {
                 </div>
 
                 {/* Pricing Cards Grid - Use items-start to end boxes where layer ends */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10">
                     {plans.map((plan, index) => {
                         const { value, symbol } = formatPrice(plan.name, currency, billingCycle);
                         return (
