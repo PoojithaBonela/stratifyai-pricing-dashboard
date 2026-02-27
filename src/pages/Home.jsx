@@ -1,0 +1,19 @@
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import Hero from '../components/marketing/Hero';
+import CTASection from '../components/marketing/CTASection';
+import Metrics from '../components/marketing/Metrics';
+
+export default function Home() {
+    return (
+        <div className="min-h-screen bg-white">
+            <Navbar />
+            <main className="pt-20">
+                <CTASection />
+                <Hero />
+                <Metrics />
+            </main>
+            <Footer />
+        </div>
+    );
+}
