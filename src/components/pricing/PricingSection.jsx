@@ -7,6 +7,23 @@ import { formatPrice } from '../../utils/currencyFormatter';
 
 export default function PricingSection() {
     const { billingCycle, currency, toggleBillingCycle, changeCurrency } = usePricing();
+    const [isVisible, setIsVisible] = React.useState(false);
+    const sectionRef = React.useRef(null);
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            { threshold: 0.15 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const plans = [
         {
@@ -98,12 +115,12 @@ export default function PricingSection() {
     ];
 
     return (
-        <section className="relative py-24 bg-white overflow-hidden font-['Manrope',sans-serif]">
-            {/* Bright Light Blue Background Gradients - Inspired by reference */}
+        <section className="relative py-24 bg-white overflow-hidden font-Manrope,sans-serif]">
+            {/* Bright Light Blue Background Gradients */}
             <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-            {/* Bottom Symmetrical Glow - Matching top exact style */}
+            {/* Bottom Symmetrical Glow */}
             <div className="absolute bottom-0 left-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
@@ -140,8 +157,11 @@ export default function PricingSection() {
                     </div>
                 </div>
 
-                {/* Pricing Cards Grid - Use items-start to end boxes where layer ends */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10">
+                {/* Pricing Cards Grid */}
+                <div
+                    ref={sectionRef}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10"
+                >
                     {plans.map((plan, index) => {
                         const { value, symbol } = formatPrice(plan.name, currency, billingCycle);
                         return (
@@ -151,6 +171,8 @@ export default function PricingSection() {
                                 price={value}
                                 priceSymbol={symbol}
                                 billingCycle={billingCycle}
+                                isVisible={isVisible}
+                                delay={index * 150} // Staggered delay
                             />
                         );
                     })}

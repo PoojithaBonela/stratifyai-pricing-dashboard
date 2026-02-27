@@ -5,6 +5,7 @@ import CTASection from '../components/marketing/CTASection';
 import Metrics from '../components/marketing/Metrics';
 import PricingSection from '../components/pricing/PricingSection';
 import TrustedBy from '../components/marketing/TrustedBy';
+import ComparisonTable from '../components/pricing/ComparisonTable';
 
 export default function Home() {
     return (
@@ -16,6 +17,7 @@ export default function Home() {
                 <Metrics />
                 <PricingSection />
                 <TrustedBy />
+                <ComparisonTable />
             </main>
             <Footer />
         </div>

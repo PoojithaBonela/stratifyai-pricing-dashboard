@@ -146,7 +146,9 @@ export default function PricingCard({
     billingCycle,
     buttonText,
     highlighted = false,
-    features = []
+    features = [],
+    isVisible = true,
+    delay = 0
 }) {
     const getPlanIcon = () => {
         if (name === 'Starter') return <StarterPlanIcon />;
@@ -156,7 +158,11 @@ export default function PricingCard({
     };
 
     return (
-        <div className="group relative flex flex-col rounded-2xl p-[2px] bg-gradient-to-br from-[#00D1FF] via-[#00FF85] to-[#00D1FF] shadow-xl shadow-gray-200/60 hover:shadow-2xl hover:shadow-[#00FF85]/20 hover:-translate-y-2 transition-all duration-500">
+        <div
+            className={`group relative flex flex-col rounded-2xl p-[2px] bg-gradient-to-br from-[#00D1FF] via-[#00FF85] to-[#00D1FF] shadow-xl shadow-gray-200/60 hover:shadow-2xl hover:shadow-[#00FF85]/20 hover:-translate-y-2 transition-all duration-700 
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            style={{ transitionDelay: `${delay}ms` }}
+        >
             {highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-md uppercase tracking-[0.1em] z-20 whitespace-nowrap">
                     ⭐ Recommended
