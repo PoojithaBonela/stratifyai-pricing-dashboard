@@ -43,9 +43,9 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-6 md:px-8">
                     <div className="flex justify-between items-center h-20">
                         {/* Left: Logo */}
-                        <div className="flex items-center gap-2 flex-shrink-0 cursor-pointer group">
-                            <img src="/images/logo.png" alt="Stratify AI" className="h-10 w-10 object-contain rounded-md transition-transform group-hover:scale-105" />
-                            <span className="text-xl font-bold text-gray-900 tracking-tight">Stratify AI</span>
+                        <div className="flex items-center gap-3 flex-shrink-0 cursor-pointer group">
+                            <img src="/images/logo.png" alt="Stratify AI" className="h-12 w-12 object-contain rounded-md transition-transform group-hover:scale-105" />
+                            <span className="text-2xl font-bold text-gray-900 tracking-tight">Stratify AI</span>
                         </div>
 
                         {/* Center: Desktop Links (md and above) */}

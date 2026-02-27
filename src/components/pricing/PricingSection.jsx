@@ -156,7 +156,7 @@ export default function PricingSection() {
                     })}
                 </div>
 
-                <div className="mt-20 text-center">
+                <div className="mt-12 text-center">
                     <p className="text-[#697386] text-sm italic">
                         All plans include a 14-day free trial. No credit card required.
                     </p>

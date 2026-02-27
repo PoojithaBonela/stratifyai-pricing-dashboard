@@ -4,6 +4,7 @@ import Hero from '../components/marketing/Hero';
 import CTASection from '../components/marketing/CTASection';
 import Metrics from '../components/marketing/Metrics';
 import PricingSection from '../components/pricing/PricingSection';
+import TrustedBy from '../components/marketing/TrustedBy';
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
                 <Hero />
                 <Metrics />
                 <PricingSection />
+                <TrustedBy />
             </main>
             <Footer />
         </div>
