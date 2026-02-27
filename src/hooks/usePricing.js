@@ -1,6 +1,21 @@
 import { useState } from 'react';
 
-export default function usePricing() {
-    const [billingCycle, setBillingCycle] = useState('monthly');
-    return { billingCycle, setBillingCycle };
-}
+export const usePricing = () => {
+    const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' or 'yearly'
+    const [currency, setCurrency] = useState('INR'); // 'INR' or 'USD'
+
+    const toggleBillingCycle = () => {
+        setBillingCycle(prev => prev === 'monthly' ? 'yearly' : 'monthly');
+    };
+
+    const changeCurrency = (newCurrency) => {
+        setCurrency(newCurrency);
+    };
+
+    return {
+        billingCycle,
+        currency,
+        toggleBillingCycle,
+        changeCurrency
+    };
+};

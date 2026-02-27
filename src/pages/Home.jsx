@@ -3,6 +3,7 @@ import Footer from '../components/layout/Footer';
 import Hero from '../components/marketing/Hero';
 import CTASection from '../components/marketing/CTASection';
 import Metrics from '../components/marketing/Metrics';
+import PricingSection from '../components/pricing/PricingSection';
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
                 <CTASection />
                 <Hero />
                 <Metrics />
+                <PricingSection />
             </main>
             <Footer />
         </div>
