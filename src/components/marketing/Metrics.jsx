@@ -74,7 +74,7 @@ export default function Metrics() {
         <section className="bg-[#2d333f] border-y border-white/5 pt-6 pb-12 lg:pt-8 lg:pb-16">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 {/* Strategic Header - Centered Block with Left-Aligned Text */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-center gap-4 lg:gap-16 mb-8 lg:mb-12 w-fit mx-auto">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-center gap-4 lg:gap-16 mb-8 lg:mb-12 w-full lg:w-fit mx-auto">
                     <div className="max-w-[280px]">
                         <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight font-['Outfit',sans-serif] tracking-tight">
                             Strategic Decision Intelligence

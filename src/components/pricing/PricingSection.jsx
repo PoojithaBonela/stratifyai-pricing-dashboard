@@ -168,10 +168,10 @@ export default function PricingSection() {
                     </div>
                 </div>
 
-                {/* Pricing Cards Grid */}
+                {/* Pricing Cards Grid - Slightly Scaled Down */}
                 <div
                     ref={sectionRef}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10 max-w-6xl mx-auto transform transform-origin-top md:scale-[0.95]"
                 >
                     {plans.map((plan, index) => {
                         const { value, symbol } = formatPrice(plan.name, currency, billingCycle);
