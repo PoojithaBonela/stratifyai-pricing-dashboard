@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Hero() {
     return (
-        <section className="bg-[#f8f9fb] pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden shadow-[inset_0_12px_24px_-12px_rgba(79,70,229,0.15),_inset_0_-12px_24px_-12px_rgba(79,70,229,0.15),_0_4px_20px_-2px_rgba(0,0,0,0.03)] border-y border-indigo-100/50">
+        <section className="bg-[#f8f9fb] pt-20 pb-24 md:pt-24 md:pb-36 overflow-hidden shadow-[inset_0_12px_24px_-12px_rgba(79,70,229,0.15),_inset_0_-12px_24px_-12px_rgba(79,70,229,0.15),_0_4px_20px_-2px_rgba(0,0,0,0.03)] border-y border-indigo-100/50">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center flex flex-col items-center">
                     {/* Main Headline styled like the reference image */}

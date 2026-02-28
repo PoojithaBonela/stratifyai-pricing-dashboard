@@ -148,6 +148,7 @@ export default function PricingCard({
     highlighted = false,
     features = [],
     isVisible = true,
+    isRefreshing = false,
     delay = 0
 }) {
     const getPlanIcon = () => {
@@ -159,68 +160,75 @@ export default function PricingCard({
 
     return (
         <div
-            className={`group relative flex flex-col rounded-2xl p-[2px] bg-gradient-to-br from-[#00D1FF] via-[#00FF85] to-[#00D1FF] shadow-xl shadow-gray-200/60 hover:shadow-2xl hover:shadow-[#00FF85]/20 hover:-translate-y-2 transition-all duration-700 
+            className={`group relative flex flex-col rounded-2xl p-[2px] bg-gradient-to-br from-[#00D1FF] via-[#00FF85] to-[#00D1FF] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12)] hover:shadow-[0_40px_80px_-16px_rgba(0,0,0,0.2)] hover:-translate-y-4 transition-all duration-700 
                 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             style={{ transitionDelay: `${delay}ms` }}
         >
-            {highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-md uppercase tracking-[0.1em] z-20 whitespace-nowrap">
-                    ⭐ Recommended
-                </div>
-            )}
-            <div className="flex flex-col p-8 bg-white rounded-[14px] relative overflow-hidden items-center text-center">
+            <div className={`flex flex-col h-full w-full transition-opacity duration-300 ${isRefreshing ? 'opacity-90' : 'opacity-100'}`}>
+                {/* Ambient Radiating Glow for Featured Plan */}
+                {highlighted && (
+                    <div Name="ambient-glow" className="absolute inset-0 -z-10 bg-[#00FF85] opacity-20 blur-[60px] group-hover:blur-[80px] transition-all duration-700 pointer-events-none" />
+                )}
 
-                <div className="mb-4 relative z-10 min-h-[110px] flex flex-col items-center justify-center">
-                    <div className="flex items-center gap-3 mb-2">
-                        {getPlanIcon()}
-                        <h3 className="text-xl font-bold text-[#1a1f36]">{name}</h3>
+                {highlighted && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-md uppercase tracking-[0.1em] z-20 whitespace-nowrap">
+                        ⭐ Recommended
                     </div>
-                    <p className="text-sm text-[#4f566b] leading-relaxed px-4">{description}</p>
-                </div>
+                )}
+                <div className="flex flex-col p-8 bg-white rounded-[14px] relative overflow-hidden items-center text-center h-full">
 
-                <div className="mb-6 flex items-baseline gap-1 relative z-10">
-                    <span className="text-4xl font-extrabold text-[#1a1f36] tracking-tight">{priceSymbol}{price}</span>
-                    <span className="text-[#697386] font-medium text-sm">/month</span>
-                </div>
+                    <div className="mb-4 relative z-10 min-h-[110px] flex flex-col items-center justify-center">
+                        <div className="flex items-center gap-3 mb-2">
+                            {getPlanIcon()}
+                            <h3 className="text-xl font-bold text-[#1a1f36]">{name}</h3>
+                        </div>
+                        <p className="text-sm text-[#4f566b] leading-relaxed px-4">{description}</p>
+                    </div>
 
-                <button className="w-full py-2.5 px-4 rounded-xl font-bold text-sm bg-black text-white hover:bg-gray-800 shadow-md shadow-gray-100 hover:shadow-xl transition-all duration-300 mb-8 transform group-hover:scale-[1.02] relative z-10">
-                    {buttonText}
-                </button>
+                    <div className="mb-6 flex items-baseline gap-1 relative z-10">
+                        <span className="text-4xl font-extrabold text-[#1a1f36] tracking-tight">{priceSymbol}{price}</span>
+                        <span className="text-[#697386] font-medium text-sm">/month</span>
+                    </div>
 
-                <div className="w-full flex-grow flex flex-col relative z-10 text-left">
-                    <div className="flex flex-col border-b border-gray-300 pb-4">
-                        {features.map((section, idx) => (
-                            <div key={idx} className="flex flex-col">
-                                {idx > 0 && <div className="h-px bg-gray-300 w-full my-6 opacity-60" />}
+                    <button className="w-full py-2.5 px-4 rounded-xl font-bold text-sm bg-black text-white hover:bg-gray-800 shadow-md shadow-gray-100 hover:shadow-xl transition-all duration-300 mb-8 transform group-hover:scale-[1.02] relative z-10">
+                        {buttonText}
+                    </button>
 
-                                <div className="flex flex-col gap-4">
-                                    <div className={`flex items-center gap-2 py-2 px-3 rounded-lg border-x-2 ${section.title === 'Strategic Simulation Core'
-                                        ? 'bg-gradient-to-r from-[#00FF85]/5 via-[#00FF85]/10 to-[#00FF85]/5 border-[#00FF85]/20'
-                                        : section.title === 'Intelligence Layer'
-                                            ? 'bg-gradient-to-r from-blue-400/5 via-blue-400/10 to-blue-400/5 border-blue-400/20'
-                                            : 'bg-gradient-to-r from-purple-400/5 via-purple-400/10 to-purple-400/5 border-purple-400/20'
-                                        }`}>
-                                        {section.title === 'Strategic Simulation Core' && <StrategyIcon />}
-                                        {section.title === 'Intelligence Layer' && <IntelligenceIcon />}
-                                        {section.title === 'Enterprise Strategy Suite' && <EnterpriseIcon />}
-                                        <h4 className="text-xs font-bold text-[#1a1f36] uppercase tracking-widest">{section.title}</h4>
+                    <div className="w-full flex-grow flex flex-col relative z-10 text-left">
+                        <div className="flex flex-col border-b border-gray-300 pb-4">
+                            {features.map((section, idx) => (
+                                <div key={idx} className="flex flex-col">
+                                    {idx > 0 && <div className="h-px bg-gray-300 w-full my-6 opacity-60" />}
+
+                                    <div className="flex flex-col gap-4">
+                                        <div className={`flex items-center gap-2 py-2 px-3 rounded-lg border-x-2 ${section.title === 'Strategic Simulation Core'
+                                            ? 'bg-gradient-to-r from-[#00FF85]/5 via-[#00FF85]/10 to-[#00FF85]/5 border-[#00FF85]/20'
+                                            : section.title === 'Intelligence Layer'
+                                                ? 'bg-gradient-to-r from-blue-400/5 via-blue-400/10 to-blue-400/5 border-blue-400/20'
+                                                : 'bg-gradient-to-r from-purple-400/5 via-purple-400/10 to-purple-400/5 border-purple-400/20'
+                                            }`}>
+                                            {section.title === 'Strategic Simulation Core' && <StrategyIcon />}
+                                            {section.title === 'Intelligence Layer' && <IntelligenceIcon />}
+                                            {section.title === 'Enterprise Strategy Suite' && <EnterpriseIcon />}
+                                            <h4 className="text-xs font-bold text-[#1a1f36] uppercase tracking-widest">{section.title}</h4>
+                                        </div>
+
+                                        <ul className="flex flex-col gap-3.5 px-1">
+                                            {section.items.map((item, itemIdx) => (
+                                                <li key={itemIdx} className="flex items-center gap-3 group/item">
+                                                    <div className="w-7 h-7 rounded-lg bg-gray-50 border border-gray-100/50 flex items-center justify-center transition-colors group-hover/item:bg-white group-hover/item:border-gray-200">
+                                                        <FeatureIcon type={getFeatureType(item.text)} />
+                                                    </div>
+                                                    <span className="text-[14px] text-[#4f566b] font-medium leading-tight">
+                                                        {item.text}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-
-                                    <ul className="flex flex-col gap-3.5 px-1">
-                                        {section.items.map((item, itemIdx) => (
-                                            <li key={itemIdx} className="flex items-center gap-3 group/item">
-                                                <div className="w-7 h-7 rounded-lg bg-gray-50 border border-gray-100/50 flex items-center justify-center transition-colors group-hover/item:bg-white group-hover/item:border-gray-200">
-                                                    <FeatureIcon type={getFeatureType(item.text)} />
-                                                </div>
-                                                <span className="text-[14px] text-[#4f566b] font-medium leading-tight">
-                                                    {item.text}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

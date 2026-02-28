@@ -52,10 +52,10 @@ const MetricItem = ({ value, label, prefix = '', suffix = '' }) => {
 
     return (
         <div ref={elementRef} className="flex flex-col items-center group">
-            <div className="text-4xl md:text-5xl font-bold text-[#2d333f] mb-2 tracking-tight transition-transform group-hover:scale-105 duration-300">
+            <div className="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tighter transition-all duration-500 group-hover:text-blue-400 font-['Manrope',sans-serif]">
                 {prefix}{formattedCount}{suffix}+
             </div>
-            <p className="text-xs md:text-sm font-normal text-[#697386] text-center lowercase tracking-normal leading-relaxed max-w-[180px]">
+            <p className="text-[12px] lg:text-[14px] font-bold text-gray-400 text-center tracking-wide leading-snug max-w-[160px] font-['Manrope',sans-serif]">
                 {label}
             </p>
         </div>
@@ -71,9 +71,23 @@ export default function Metrics() {
     ];
 
     return (
-        <section className="bg-white border-y border-gray-100 py-12 md:py-20">
+        <section className="bg-[#2d333f] border-y border-white/5 pt-6 pb-12 lg:pt-8 lg:pb-16">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+                {/* Strategic Header - Ultra Compact */}
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10 mb-6 lg:mb-8">
+                    <div className="lg:w-1/4">
+                        <h2 className="text-lg md:text-2xl font-extrabold text-white leading-tight font-['Outfit',sans-serif] tracking-tight">
+                            Strategic Decision Intelligence
+                        </h2>
+                    </div>
+                    <div className="lg:w-3/4">
+                        <p className="text-[13px] md:text-base text-gray-300 font-medium leading-relaxed font-['Manrope',sans-serif] max-w-2xl">
+                            Stratify AI is the intelligence core that makes strategic decisions trustworthy—driving enterprise-wide performance through mission-critical simulation.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 border-t border-white/5 pt-6 lg:pt-8">
                     {metrics.map((metric, index) => (
                         <MetricItem
                             key={index}

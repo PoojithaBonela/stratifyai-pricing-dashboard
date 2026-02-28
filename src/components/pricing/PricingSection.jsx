@@ -8,7 +8,14 @@ import { formatPrice } from '../../utils/currencyFormatter';
 export default function PricingSection() {
     const { billingCycle, currency, toggleBillingCycle, changeCurrency } = usePricing();
     const [isVisible, setIsVisible] = React.useState(false);
+    const [isRefreshing, setIsRefreshing] = React.useState(false);
     const sectionRef = React.useRef(null);
+
+    React.useEffect(() => {
+        setIsRefreshing(true);
+        const timer = setTimeout(() => setIsRefreshing(false), 200);
+        return () => clearTimeout(timer);
+    }, [billingCycle]);
 
     React.useEffect(() => {
         const observer = new IntersectionObserver(
@@ -115,21 +122,25 @@ export default function PricingSection() {
     ];
 
     return (
-        <section className="relative py-24 bg-white overflow-hidden font-Manrope,sans-serif]">
-            {/* Bright Light Blue Background Gradients */}
-            <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-            <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <section className="relative py-24 bg-white overflow-hidden font-['Manrope',sans-serif]">
+            {/* Ultra-Soft Ambient Haze Layer */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[800px] bg-indigo-100/40 rounded-full blur-[160px] pointer-events-none z-0" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-sky-100/30 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            {/* Bottom Symmetrical Glow */}
-            <div className="absolute bottom-0 left-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-sky-400 opacity-[0.12] rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
+            {/* Corner Atmospheric Glows */}
+            <div className="absolute top-0 left-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
+            <div className="absolute top-0 right-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
+
+            {/* Bottom Atmospheric Glows */}
+            <div className="absolute bottom-0 left-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] -translate-x-1/2 translate-y-1/2 pointer-events-none z-0" />
+            <div className="absolute bottom-0 right-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] translate-x-1/2 translate-y-1/2 pointer-events-none z-0" />
 
             <div className="relative max-w-7xl mx-auto px-6 md:px-8">
                 {/* Header Section */}
                 <div className="flex flex-col items-center text-center mb-16 relative z-30">
                     <div className="mb-12">
                         <h2 className="text-3xl md:text-5xl font-semibold text-[#1a1f36] mb-4 tracking-tight font-['Outfit',sans-serif]">
-                            Built to Grow With Your Strategy
+                            Model Every Business Decision With Confidence
                         </h2>
                         <p className="text-lg text-[#697386] max-w-2xl mx-auto">
                             Choose a plan that fits your current needs and scale when you're ready.
@@ -172,6 +183,7 @@ export default function PricingSection() {
                                 priceSymbol={symbol}
                                 billingCycle={billingCycle}
                                 isVisible={isVisible}
+                                isRefreshing={isRefreshing}
                                 delay={index * 150} // Staggered delay
                             />
                         );

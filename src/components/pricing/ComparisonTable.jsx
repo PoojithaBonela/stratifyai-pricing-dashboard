@@ -107,6 +107,10 @@ export default function ComparisonTable() {
 
     return (
         <section ref={sectionRef} className="py-20 relative overflow-hidden bg-white">
+            {/* Ultra-Soft Purple Ambient Haze */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[800px] bg-purple-200/50 rounded-full blur-[180px] pointer-events-none z-0" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-indigo-100/60 rounded-full blur-[140px] pointer-events-none z-0" />
+
             {/* 4-Corner Purple Gradient Effect */}
             <div className="absolute top-0 left-0 w-[800px] h-[500px] bg-purple-400 opacity-[0.1] rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute top-0 right-0 w-[800px] h-[500px] bg-purple-400 opacity-[0.1] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -132,8 +136,8 @@ export default function ComparisonTable() {
                             <table className="w-full text-left border-collapse table-fixed">
                                 <thead>
                                     <tr className="border-b border-gray-100">
-                                        <th className="py-6 px-6 w-[28%] bg-white border-b border-gray-50">
-                                            <span className="text-[9px] font-bold text-gray-300 uppercase tracking-[0.2em]">Feature Matrix</span>
+                                        <th className="py-6 px-6 w-[28%] bg-white border-b border-gray-200">
+                                            <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-[0.2em]">Feature Matrix</span>
                                         </th>
                                         <th className="py-6 px-4 w-[24%] bg-gray-100/60 align-bottom">
                                             <div className="flex flex-col justify-end items-center h-[70px] gap-3">
@@ -161,38 +165,48 @@ export default function ComparisonTable() {
                                 </thead>
                                 <tbody>
                                     {sections.map((section, idx) => {
-                                        const badgeColors = [
-                                            'bg-blue-50 text-blue-700 border-blue-100',
-                                            'bg-purple-50 text-purple-700 border-purple-100',
-                                            'bg-indigo-50 text-indigo-700 border-indigo-100',
-                                            'bg-rose-50 text-rose-700 border-rose-100'
-                                        ];
+                                        const getHeaderStyles = (title) => {
+                                            if (title === "Usage & Limits") return "bg-gradient-to-r from-blue-400/5 via-blue-400/10 to-blue-400/5 border-blue-400/20";
+                                            if (title === "Model Power & AI Depth") return "bg-gradient-to-r from-[#00FF85]/5 via-[#00FF85]/10 to-[#00FF85]/5 border-[#00FF85]/20";
+                                            if (title === "Collaboration & Workflow") return "bg-gradient-to-r from-purple-400/5 via-purple-400/10 to-purple-400/5 border-purple-400/20";
+                                            return "bg-gradient-to-r from-indigo-400/5 via-indigo-400/10 to-indigo-400/5 border-indigo-400/20";
+                                        };
+
+                                        const getIconColor = (title) => {
+                                            if (title === "Usage & Limits") return "text-blue-600";
+                                            if (title === "Model Power & AI Depth") return "text-emerald-500";
+                                            if (title === "Collaboration & Workflow") return "text-purple-600";
+                                            return "text-indigo-600";
+                                        };
+
                                         return (
                                             <React.Fragment key={idx}>
-                                                <tr className="bg-gray-100/80 border-y border-gray-100">
-                                                    <td colSpan={4} className="py-4">
-                                                        <div className="flex items-center justify-center gap-2">
-                                                            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-bold uppercase tracking-[0.15em] shadow-sm ${badgeColors[idx % badgeColors.length]}`}>
-                                                                {section.icon}
-                                                                {section.title}
+                                                <tr className="bg-gray-50/50 border-y border-gray-200/80">
+                                                    <td colSpan={4} className="py-4 px-6">
+                                                        <div className="flex justify-center">
+                                                            <div className={`flex items-center gap-3 py-2 px-5 rounded-xl border-x-2 shadow-sm ${getHeaderStyles(section.title)}`}>
+                                                                <div className={`${getIconColor(section.title)} scale-110`}>
+                                                                    {section.icon}
+                                                                </div>
+                                                                <h4 className="text-[11px] font-extrabold text-[#1a1f36] uppercase tracking-[0.2em]">{section.title}</h4>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 {section.features.map((feature, fIdx) => (
-                                                    <tr key={fIdx} className="group/row transition-all duration-300 border-b border-gray-50 last:border-b-0 hover:bg-[#f8faff] hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] relative z-0 hover:z-10 cursor-default">
-                                                        <td className="py-3.5 px-8 bg-white border-r border-gray-100 transition-all duration-300 group-hover/row:pl-10 relative overflow-hidden">
+                                                    <tr key={fIdx} className="group/row transition-all duration-300 border-b border-gray-200/60 last:border-b-0 hover:bg-[#f8faff] hover:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] relative z-0 hover:z-10 cursor-default">
+                                                        <td className="py-4 px-8 bg-white border-r border-gray-200/60 transition-all duration-300 group-hover/row:pl-10 relative overflow-hidden">
                                                             <div className="absolute left-0 top-0 bottom-0 w-1 bg-purple-500 opacity-0 group-hover/row:opacity-100 transition-all duration-300" />
-                                                            <span className="text-[12px] font-medium text-[#4f566b] transition-colors group-hover/row:text-[#1a1f36]">{feature.name}</span>
+                                                            <span className="text-[13px] font-semibold text-[#4f566b] transition-colors group-hover/row:text-[#1a1f36]">{feature.name}</span>
                                                         </td>
-                                                        <td className="py-3.5 px-8 bg-gray-100/60 transition-colors duration-300 group-hover/row:bg-gray-100/30">
-                                                            <div className="flex items-center justify-center scale-90 transition-transform duration-300 group-hover/row:scale-105">{renderValue(feature.starter)}</div>
+                                                        <td className="py-4 px-8 bg-gray-50/40 transition-colors duration-300 group-hover/row:bg-white">
+                                                            <div className="flex items-center justify-center scale-95 transition-transform duration-300 group-hover/row:scale-110">{renderValue(feature.starter)}</div>
                                                         </td>
-                                                        <td className="py-3.5 px-8 bg-purple-100/40 border-x border-gray-50 transition-colors duration-300 group-hover/row:bg-purple-100/20">
-                                                            <div className="flex items-center justify-center scale-90 transition-transform duration-300 group-hover/row:scale-105">{renderValue(feature.advanced)}</div>
+                                                        <td className="py-4 px-8 bg-purple-100/30 border-x border-gray-200/60 transition-colors duration-300 group-hover/row:bg-purple-100/10">
+                                                            <div className="flex items-center justify-center scale-95 transition-transform duration-300 group-hover/row:scale-110">{renderValue(feature.advanced)}</div>
                                                         </td>
-                                                        <td className="py-3.5 px-8 bg-gray-100/60 transition-colors duration-300 group-hover/row:bg-gray-100/30">
-                                                            <div className="flex items-center justify-center scale-90 transition-transform duration-300 group-hover/row:scale-105">{renderValue(feature.enterprise)}</div>
+                                                        <td className="py-4 px-8 bg-gray-50/40 transition-colors duration-300 group-hover/row:bg-white">
+                                                            <div className="flex items-center justify-center scale-95 transition-transform duration-300 group-hover/row:scale-110">{renderValue(feature.enterprise)}</div>
                                                         </td>
                                                     </tr>
                                                 ))}
