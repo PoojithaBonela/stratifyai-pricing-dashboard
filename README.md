@@ -1,6 +1,6 @@
 # Stratify AI — Dynamic Pricing Dashboard
 
-A responsive single-page pricing dashboard built as a frontend internship assignment. The project is themed around a fictional AI SaaS product and focuses on dynamic, data-driven UI architecture built with React.
+A responsive single-page pricing dashboard. The project is themed around a fictional AI SaaS product and focuses on dynamic, data-driven UI architecture built with React.
 
 ---
 
