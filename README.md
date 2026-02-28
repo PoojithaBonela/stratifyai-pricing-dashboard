@@ -32,15 +32,6 @@ The UI is fully data-driven. Any plan, price, or feature can be updated from the
 - Plan-specific limits (e.g. simulation runs, scenario comparisons) use `{{placeholder}}` tokens in `comparisonData.json`, which are resolved at runtime against values from `pricingData.json`
 - Toggle and currency selector updates propagate through state without page reloads
 
-**Separation of concerns:**
-
-| Layer | Responsibility |
-|---|---|
-| JSON files | Data source |
-| React components | Presentation and logic |
-
----
-
 ## Component Architecture
 
 ```
