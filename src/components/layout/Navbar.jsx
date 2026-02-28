@@ -2,12 +2,76 @@ import React, { useState, useEffect } from 'react';
 import MobileMenu from './MobileMenu';
 
 const navLinks = [
-    { label: 'Platform', href: '#', hasDropdown: true },
-    { label: 'Solutions', href: '#', hasDropdown: true },
-    { label: 'Developers', href: '#', hasDropdown: true },
-    { label: 'Resources', href: '#', hasDropdown: true },
-    { label: 'Pricing', href: '#pricing', hasDropdown: false },
-    { label: 'About', href: '#', hasDropdown: true },
+    {
+        label: 'Platform',
+        href: '#',
+        hasDropdown: true,
+        dropdownItems: [
+            { name: 'Platform Overview', href: '#' },
+            { name: 'Strategy Simulation Engine', href: '#' },
+            { name: 'AI Intelligence Layer', href: '#' },
+            { name: 'Risk & Forecasting', href: '#' },
+            { name: 'Advanced Dashboards', href: '#' },
+            { name: 'Security & Compliance', href: '#' },
+        ]
+    },
+    {
+        label: 'Solutions',
+        href: '#',
+        hasDropdown: true,
+        dropdownItems: [
+            { name: 'For Individual Founders', href: '#' },
+            { name: 'For Growing Startups', href: '#' },
+            { name: 'For Enterprises', href: '#' },
+            { name: 'Financial Planning', href: '#' },
+            { name: 'Market Expansion Strategy', href: '#' },
+            { name: 'Operational Optimization', href: '#' },
+        ]
+    },
+    {
+        label: 'Developers',
+        href: '#',
+        hasDropdown: true,
+        dropdownItems: [
+            { name: 'API Documentation', href: '#' },
+            { name: 'Developer Guide', href: '#' },
+            { name: 'Integrations', href: '#' },
+            { name: 'Data Upload Specs', href: '#' },
+            { name: 'System Status', href: '#' },
+            { name: 'Release Notes', href: '#' },
+        ]
+    },
+    {
+        label: 'Resources',
+        href: '#',
+        hasDropdown: true,
+        dropdownItems: [
+            { name: 'Blog', href: '#' },
+            { name: 'Case Studies', href: '#' },
+            { name: 'Pricing', href: '#' },
+            { name: 'FAQs', href: '#' },
+            { name: 'Help Center', href: '#' },
+            { name: 'Contact Support', href: '#' },
+        ]
+    },
+    {
+        label: 'Pricing',
+        href: '#pricing',
+        hasDropdown: false
+    },
+    {
+        label: 'About',
+        href: '#',
+        hasDropdown: true,
+        dropdownItems: [
+            { name: 'About Us', href: '#' },
+            { name: 'Careers', href: '#' },
+            { name: 'Leadership', href: '#' },
+            { name: 'Press & News', href: '#' },
+            { name: 'Privacy Policy', href: '#' },
+            { name: 'Terms of Service', href: '#' },
+        ]
+    },
 ];
 
 const ChevronDown = () => (
@@ -49,16 +113,29 @@ export default function Navbar() {
                         </div>
 
                         {/* Center: Desktop Links (md and above) */}
-                        <ul className="hidden lg:flex items-center space-x-7">
+                        <ul className="hidden lg:flex items-center space-x-7 h-full">
                             {navLinks.map((link) => (
-                                <li key={link.label} className="group">
+                                <li key={link.label} className="group relative h-full flex items-center cursor-pointer">
                                     <a
                                         href={link.href}
-                                        className="flex items-center text-[15px] font-semibold text-[#1a1f36] hover:text-indigo-600 transition-colors duration-200"
+                                        className="flex items-center text-[15px] font-semibold text-[#1a1f36] group-hover:text-indigo-600 transition-colors duration-200 py-8 relative after:absolute after:bottom-[24px] after:left-0 after:w-full after:h-[2px] after:bg-indigo-600 after:scale-x-0 group-hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300"
                                     >
                                         {link.label}
                                         {link.hasDropdown && <ChevronDown />}
                                     </a>
+
+                                    {/* Dropdown Menu */}
+                                    {link.hasDropdown && link.dropdownItems && (
+                                        <div className="absolute top-full left-0 w-[260px] bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+                                            <div className="p-3">
+                                                {link.dropdownItems.map((item) => (
+                                                    <a key={item.name} href={item.href} className="block px-4 py-3 text-[15px] text-gray-700 hover:text-indigo-600 hover:bg-slate-50 rounded-xl transition-all font-medium font-['Manrope',sans-serif]">
+                                                        {item.name}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </li>
                             ))}
                         </ul>

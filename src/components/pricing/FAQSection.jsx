@@ -94,8 +94,14 @@ export default function FAQSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="bg-gray-50/50 py-16 md:py-20 overflow-hidden">
-            <div className={`max-w-3xl mx-auto px-6 transition-all duration-[1000ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+        <section ref={sectionRef} className="relative bg-white py-16 md:py-20 overflow-hidden">
+            {/* Background Corner Gradients - Matching Pricing Section */}
+            <div className="absolute top-0 left-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
+            <div className="absolute top-0 right-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
+            <div className="absolute bottom-0 left-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] -translate-x-1/2 translate-y-1/2 pointer-events-none z-0" />
+            <div className="absolute bottom-0 right-0 w-[900px] h-[700px] bg-sky-400 opacity-[0.15] rounded-full blur-[140px] translate-x-1/2 translate-y-1/2 pointer-events-none z-0" />
+
+            <div className={`relative max-w-3xl mx-auto px-6 transition-all duration-[1000ms] ease-out transform z-10 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                 <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight font-['Outfit',sans-serif]">
                         Frequently Asked Questions

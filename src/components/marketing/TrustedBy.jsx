@@ -28,25 +28,25 @@ export default function TrustedBy() {
     const scrollingLogos = [...logos, ...logos, ...logos];
 
     return (
-        <section className="relative py-16 bg-gray-50 overflow-hidden border-y border-gray-100">
+        <section className="relative py-16 bg-[#2d333f] overflow-hidden border-y border-white/5">
             {/* Dark inner shadows Top/Bottom */}
-            <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-gray-200/40 to-transparent pointer-events-none z-10" />
-            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-gray-200/40 to-transparent pointer-events-none z-10" />
+            <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#1a1f36]/20 to-transparent pointer-events-none z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#1a1f36]/20 to-transparent pointer-events-none z-10" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-0">
                 <div className="text-center mb-10">
-                    <h3 className="text-xs font-bold text-[#697386] uppercase tracking-[0.4em] opacity-60 mb-2">
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.4em] opacity-80 mb-2">
                         Strategic Partners
                     </h3>
-                    <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1f36] tracking-tight font-['Outfit',sans-serif]">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight font-['Outfit',sans-serif]">
                         Trusted by Strategic Teams Worldwide
                     </h2>
                 </div>
 
                 <div className="relative mt-4">
-                    {/* Stronger edge fades matching gray-50 background */}
-                    <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-gray-50 via-gray-50/90 to-transparent z-10" />
-                    <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-gray-50 via-gray-50/90 to-transparent z-10" />
+                    {/* Stronger edge fades matching dark background */}
+                    <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[#2d333f] via-[#2d333f]/90 to-transparent z-10" />
+                    <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[#2d333f] via-[#2d333f]/90 to-transparent z-10" />
 
                     <div className="flex overflow-hidden whitespace-nowrap">
                         {/* 
@@ -62,7 +62,7 @@ export default function TrustedBy() {
                                     <img
                                         src={logo.src}
                                         alt={logo.name}
-                                        className="h-10 md:h-14 w-auto min-w-[120px] object-contain grayscale brightness-0"
+                                        className="h-10 md:h-14 w-auto min-w-[120px] object-contain grayscale brightness-0 invert"
                                         style={{ display: 'block' }}
                                     />
                                 </div>

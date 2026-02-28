@@ -2,8 +2,12 @@ import React from 'react';
 
 export default function Hero() {
     return (
-        <section className="bg-[#f8f9fb] pt-20 pb-24 md:pt-24 md:pb-36 overflow-hidden shadow-[inset_0_12px_24px_-12px_rgba(79,70,229,0.15),_inset_0_-12px_24px_-12px_rgba(79,70,229,0.15),_0_4px_20px_-2px_rgba(0,0,0,0.03)] border-y border-indigo-100/50">
-            <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <section className="relative bg-[#f8f9fb] pt-20 pb-24 md:pt-24 md:pb-36 overflow-hidden shadow-[inset_0_12px_24px_-12px_rgba(79,70,229,0.15),_inset_0_-12px_24px_-12px_rgba(79,70,229,0.15),_0_4px_20px_-2px_rgba(0,0,0,0.03)] border-y border-indigo-100/50">
+            {/* Background Purple/Indigo Gradients - Subtle Top Corners Only */}
+            <div className="absolute top-0 left-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-400/10 rounded-full blur-[140px] -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-indigo-400/10 rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
                 <div className="text-center flex flex-col items-center">
                     {/* Main Headline styled like the reference image */}
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#1a1f36] mb-8">

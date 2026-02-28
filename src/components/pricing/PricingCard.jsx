@@ -167,11 +167,11 @@ export default function PricingCard({
             <div className={`flex flex-col h-full w-full transition-opacity duration-300 ${isRefreshing ? 'opacity-90' : 'opacity-100'}`}>
                 {/* Ambient Radiating Glow for Featured Plan */}
                 {highlighted && (
-                    <div Name="ambient-glow" className="absolute inset-0 -z-10 bg-[#00FF85] opacity-20 blur-[60px] group-hover:blur-[80px] transition-all duration-700 pointer-events-none" />
+                    <div Name="ambient-glow" className="absolute inset-0 -z-10 bg-sky-400 opacity-20 blur-[60px] group-hover:blur-[80px] transition-all duration-700 pointer-events-none" />
                 )}
 
                 {highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-md uppercase tracking-[0.1em] z-20 whitespace-nowrap">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#2d333f] text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-md uppercase tracking-[0.1em] z-20 whitespace-nowrap">
                         ⭐ Recommended
                     </div>
                 )}
@@ -190,7 +190,7 @@ export default function PricingCard({
                         <span className="text-[#697386] font-medium text-sm">/month</span>
                     </div>
 
-                    <button className="w-full py-2.5 px-4 rounded-xl font-bold text-sm bg-black text-white hover:bg-gray-800 shadow-md shadow-gray-100 hover:shadow-xl transition-all duration-300 mb-8 transform group-hover:scale-[1.02] relative z-10">
+                    <button className="w-full py-2.5 px-4 rounded-xl font-bold text-sm bg-[#2d333f] text-white hover:bg-[#1a1f2b] shadow-md shadow-gray-100 hover:shadow-xl transition-all duration-300 mb-8 transform group-hover:scale-[1.02] relative z-10">
                         {buttonText}
                     </button>
 

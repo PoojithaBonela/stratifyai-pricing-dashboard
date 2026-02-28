@@ -10,12 +10,14 @@ import TrustedBy from '../components/marketing/TrustedBy';
 import ComparisonTable from '../components/pricing/ComparisonTable';
 import RiskVisualizationSection from '../components/marketing/RiskVisualizationSection';
 import FAQSection from '../components/pricing/FAQSection';
+import CTABanner from '../components/marketing/CTABanner';
 
 export default function Home() {
     return (
         <div className="min-h-screen bg-white">
             <Navbar />
             <main className="pt-20">
+                <CTABanner />
                 <Hero />
                 <Metrics />
                 <PricingSection />

@@ -73,15 +73,15 @@ export default function Metrics() {
     return (
         <section className="bg-[#2d333f] border-y border-white/5 pt-6 pb-12 lg:pt-8 lg:pb-16">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-                {/* Strategic Header - Ultra Compact */}
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10 mb-6 lg:mb-8">
-                    <div className="lg:w-1/4">
-                        <h2 className="text-lg md:text-2xl font-extrabold text-white leading-tight font-['Outfit',sans-serif] tracking-tight">
+                {/* Strategic Header - Centered Block with Left-Aligned Text */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-center gap-4 lg:gap-16 mb-8 lg:mb-12 w-fit mx-auto">
+                    <div className="max-w-[280px]">
+                        <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight font-['Outfit',sans-serif] tracking-tight">
                             Strategic Decision Intelligence
                         </h2>
                     </div>
-                    <div className="lg:w-3/4">
-                        <p className="text-[13px] md:text-base text-gray-300 font-medium leading-relaxed font-['Manrope',sans-serif] max-w-2xl">
+                    <div className="max-w-[550px]">
+                        <p className="text-[13px] md:text-base text-gray-300 font-medium leading-relaxed font-['Manrope',sans-serif]">
                             Stratify AI is the intelligence core that makes strategic decisions trustworthy—driving enterprise-wide performance through mission-critical simulation.
                         </p>
                     </div>
