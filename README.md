@@ -2,6 +2,8 @@
 
 A responsive single-page pricing dashboard. The project is themed around a fictional AI SaaS product and focuses on dynamic, data-driven UI architecture built with React.
 
+
+**Live Demo:** [stratifyai.vercel.app](https://stratifyai-pricing-dashboard.vercel.app/)
 ---
 
 ## How Requirements Were Satisfied
