@@ -147,6 +147,8 @@ export default function PricingCard({
     buttonText,
     highlighted = false,
     features = [],
+    simulationLimit = "",
+    scenarioComparisonLimit = "",
     isVisible = true,
     isRefreshing = false,
     delay = 0
@@ -220,7 +222,7 @@ export default function PricingCard({
                                                         <FeatureIcon type={getFeatureType(item.text)} />
                                                     </div>
                                                     <span className="text-[14px] text-[#4f566b] font-medium leading-tight">
-                                                        {item.text}
+                                                        {item.text?.replace('{{simulationLimit}}', simulationLimit)?.replace('{{scenarioComparisonLimit}}', scenarioComparisonLimit)}
                                                     </span>
                                                 </li>
                                             ))}

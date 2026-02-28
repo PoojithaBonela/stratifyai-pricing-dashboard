@@ -32,94 +32,24 @@ export default function PricingSection() {
         return () => observer.disconnect();
     }, []);
 
-    const plans = [
-        {
-            name: "Starter",
-            description: "For individual founders testing strategy decisions",
-            buttonText: "Start Modeling",
-            features: [
-                {
-                    title: "Strategic Simulation Core",
-                    items: [
-                        { text: "Strategy Simulation Engine" },
-                        { text: "Revenue Forecasting" },
-                        { text: "Risk Scoring" },
-                        { text: "Scenario Comparison (Up to 2)" },
-                        { text: "Interactive Charts" },
-                        { text: "15 Simulations per Month" },
-                        { text: "7-Day Scenario History" }
-                    ]
-                }
-            ]
-        },
-        {
-            name: "Advanced",
-            description: "For growing startups and business teams",
-            buttonText: "Upgrade Strategy",
-            highlighted: true,
-            features: [
-                {
-                    title: "Strategic Simulation Core",
-                    items: [
-                        { text: "Strategy Simulation Engine" },
-                        { text: "Revenue Forecasting" },
-                        { text: "Advanced Risk Scoring" },
-                        { text: "Scenario Comparison (Up to 5)" },
-                        { text: "Advanced Charts" },
-                        { text: "100 Simulations per Month" },
-                        { text: "30-Day Scenario History" }
-                    ]
-                },
-                {
-                    title: "Intelligence Layer",
-                    items: [
-                        { text: "Growth Probability Model" },
-                        { text: "Dynamic Sensitivity Analysis" },
-                        { text: "AI Strategy Summary Cards" },
-                        { text: "Risk Heatmap" }
-                    ]
-                }
-            ]
-        },
-        {
-            name: "Enterprise",
-            description: "For scaling companies and enterprises",
-            buttonText: "Contact Sales",
-            features: [
-                {
-                    title: "Strategic Simulation Core",
-                    items: [
-                        { text: "Strategy Simulation Engine" },
-                        { text: "Revenue Forecasting" },
-                        { text: "Advanced Risk Scoring" },
-                        { text: "Unlimited Scenario Comparison" },
-                        { text: "Advanced Dashboards" },
-                        { text: "Unlimited Simulations" },
-                        { text: "Unlimited Scenario History" }
-                    ]
-                },
-                {
-                    title: "Intelligence Layer",
-                    items: [
-                        { text: "Growth Probability Model" },
-                        { text: "Advanced Sensitivity Analysis" },
-                        { text: "AI Strategy Summary Cards" },
-                        { text: "Risk Heatmap" }
-                    ]
-                },
-                {
-                    title: "Enterprise Strategy Suite",
-                    items: [
-                        { text: "AI Strategic Recommendations" },
-                        { text: "Multi-Market Simulation" },
-                        { text: "Team Collaboration" },
-                        { text: "API Access" },
-                        { text: "Dedicated Support" }
-                    ]
-                }
-            ]
-        }
-    ];
+    const [plans, setPlans] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const fetchPricingData = async () => {
+            try {
+                const res = await fetch('/pricingData.json');
+                const data = await res.json();
+                setPlans(data.plans || []);
+            } catch (error) {
+                console.error("Failed to fetch pricing data:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchPricingData();
+    }, []);
 
     return (
         <section className="relative py-24 bg-white overflow-hidden font-['Manrope',sans-serif]">
@@ -174,7 +104,8 @@ export default function PricingSection() {
                     className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start pt-4 relative z-10 max-w-6xl mx-auto transform transform-origin-top md:scale-[0.95]"
                 >
                     {plans.map((plan, index) => {
-                        const { value, symbol } = formatPrice(plan.name, currency, billingCycle);
+                        const basePrice = billingCycle === 'yearly' ? plan.yearlyPrice : plan.monthlyPrice;
+                        const { value, symbol } = formatPrice(basePrice, currency);
                         return (
                             <PricingCard
                                 key={index}

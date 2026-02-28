@@ -38,7 +38,61 @@ const SubscribeButton = () => (
 
 export default function ComparisonTable() {
     const [isVisible, setIsVisible] = React.useState(false);
+    const [plans, setPlans] = React.useState([]);
+    const [sections, setSections] = React.useState([]);
     const sectionRef = React.useRef(null);
+
+    // Icon map — keyed to icon string in the JSON
+    const ICON_MAP = {
+        strategy: <StrategyIcon />,
+        intelligence: <IntelligenceIcon />,
+        enterprise: <EnterpriseIcon />,
+    };
+
+    React.useEffect(() => {
+        const fetchAll = async () => {
+            try {
+                const [pricingRes, comparisonRes] = await Promise.all([
+                    fetch('/pricingData.json'),
+                    fetch('/comparisonData.json'),
+                ]);
+                const pricingData = await pricingRes.json();
+                const comparisonData = await comparisonRes.json();
+
+                const fetchedPlans = pricingData.plans || [];
+                setPlans(fetchedPlans);
+
+                // Build a quick lookup: planId -> { simulationLimit, scenarioComparisonLimit, ... }
+                const planMap = {};
+                fetchedPlans.forEach(p => { planMap[p.id] = p; });
+
+                const resolveValue = (val, planId) => {
+                    if (typeof val !== 'string') return val;
+                    return val
+                        .replace('{{simulationLimit}}', planMap[planId]?.simulationLimit ?? '')
+                        .replace('{{scenarioComparisonLimit}}', planMap[planId]?.scenarioComparisonLimit ?? '');
+                };
+
+                // Map sections with placeholders resolved and icons injected
+                const resolved = (comparisonData.sections || []).map(section => ({
+                    ...section,
+                    icon: ICON_MAP[section.icon] ?? null,
+                    features: section.features.map(feature => ({
+                        ...feature,
+                        starter: resolveValue(feature.starter, 'starter'),
+                        advanced: resolveValue(feature.advanced, 'advanced'),
+                        enterprise: resolveValue(feature.enterprise, 'enterprise'),
+                    })),
+                }));
+
+                setSections(resolved);
+            } catch (error) {
+                console.error('Failed to fetch comparison data:', error);
+            }
+        };
+
+        fetchAll();
+    }, []);
 
     React.useEffect(() => {
         const observer = new IntersectionObserver(
@@ -54,50 +108,6 @@ export default function ComparisonTable() {
 
         return () => observer.disconnect();
     }, []);
-
-    const sections = [
-        {
-            title: "Usage & Limits",
-            icon: <StrategyIcon />,
-            features: [
-                { name: "Monthly Simulation Runs", starter: "15", advanced: "100", enterprise: "Unlimited" },
-                { name: "Max Scenarios Compared", starter: "2", advanced: "5", enterprise: "Unlimited" },
-                { name: "Max Saved Projects", starter: "5", advanced: "25", enterprise: "Unlimited" },
-                { name: "Data Upload Size", starter: "5MB", advanced: "25MB", enterprise: "100MB" },
-                { name: "Team Members", starter: "1", advanced: "5", enterprise: "Unlimited" },
-            ]
-        },
-        {
-            title: "Model Power & AI Depth",
-            icon: <IntelligenceIcon />,
-            features: [
-                { name: "Standard AI Model", starter: true, advanced: true, enterprise: true },
-                { name: "Advanced Forecasting Model", starter: false, advanced: true, enterprise: true },
-                { name: "Enterprise Accuracy Model", starter: false, advanced: false, enterprise: true },
-                { name: "Prescriptive AI Engine", starter: false, advanced: false, enterprise: true },
-            ]
-        },
-        {
-            title: "Collaboration & Workflow",
-            icon: <EnterpriseIcon />,
-            features: [
-                { name: "Shared Workspaces", starter: false, advanced: true, enterprise: true },
-                { name: "Role-Based Access", starter: false, advanced: false, enterprise: true },
-                { name: "Version History", starter: "7 Days", advanced: "30 Days", enterprise: "Unlimited" },
-                { name: "Export Reports", starter: "PDF", advanced: "PDF + CSV", enterprise: "Branded Reports" },
-            ]
-        },
-        {
-            title: "Support & SLA",
-            icon: <StrategyIcon />,
-            features: [
-                { name: "Email Support", starter: true, advanced: true, enterprise: true },
-                { name: "Priority Response", starter: false, advanced: true, enterprise: true },
-                { name: "Dedicated Manager", starter: false, advanced: false, enterprise: true },
-                { name: "SLA Guarantee", starter: false, advanced: false, enterprise: true },
-            ]
-        }
-    ];
 
     const renderValue = (val) => {
         if (val === true) return <CheckIcon />;

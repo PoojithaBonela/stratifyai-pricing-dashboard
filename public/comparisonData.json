@@ -1,0 +1,134 @@
+{
+    "sections": [
+        {
+            "id": "usage-limits",
+            "title": "Usage & Limits",
+            "icon": "strategy",
+            "features": [
+                {
+                    "name": "Monthly Simulation Runs",
+                    "starter": "{{simulationLimit}}",
+                    "advanced": "{{simulationLimit}}",
+                    "enterprise": "{{simulationLimit}}"
+                },
+                {
+                    "name": "Max Scenarios Compared",
+                    "starter": "{{scenarioComparisonLimit}}",
+                    "advanced": "{{scenarioComparisonLimit}}",
+                    "enterprise": "{{scenarioComparisonLimit}}"
+                },
+                {
+                    "name": "Max Saved Projects",
+                    "starter": "5",
+                    "advanced": "25",
+                    "enterprise": "Unlimited"
+                },
+                {
+                    "name": "Data Upload Size",
+                    "starter": "5MB",
+                    "advanced": "25MB",
+                    "enterprise": "100MB"
+                },
+                {
+                    "name": "Team Members",
+                    "starter": "1",
+                    "advanced": "5",
+                    "enterprise": "Unlimited"
+                }
+            ]
+        },
+        {
+            "id": "model-power",
+            "title": "Model Power & AI Depth",
+            "icon": "intelligence",
+            "features": [
+                {
+                    "name": "Standard AI Model",
+                    "starter": true,
+                    "advanced": true,
+                    "enterprise": true
+                },
+                {
+                    "name": "Advanced Forecasting Model",
+                    "starter": false,
+                    "advanced": true,
+                    "enterprise": true
+                },
+                {
+                    "name": "Enterprise Accuracy Model",
+                    "starter": false,
+                    "advanced": false,
+                    "enterprise": true
+                },
+                {
+                    "name": "Prescriptive AI Engine",
+                    "starter": false,
+                    "advanced": false,
+                    "enterprise": true
+                }
+            ]
+        },
+        {
+            "id": "collaboration",
+            "title": "Collaboration & Workflow",
+            "icon": "enterprise",
+            "features": [
+                {
+                    "name": "Shared Workspaces",
+                    "starter": false,
+                    "advanced": true,
+                    "enterprise": true
+                },
+                {
+                    "name": "Role-Based Access",
+                    "starter": false,
+                    "advanced": false,
+                    "enterprise": true
+                },
+                {
+                    "name": "Version History",
+                    "starter": "7 Days",
+                    "advanced": "30 Days",
+                    "enterprise": "Unlimited"
+                },
+                {
+                    "name": "Export Reports",
+                    "starter": "PDF",
+                    "advanced": "PDF + CSV",
+                    "enterprise": "Branded Reports"
+                }
+            ]
+        },
+        {
+            "id": "support-sla",
+            "title": "Support & SLA",
+            "icon": "strategy",
+            "features": [
+                {
+                    "name": "Email Support",
+                    "starter": true,
+                    "advanced": true,
+                    "enterprise": true
+                },
+                {
+                    "name": "Priority Response",
+                    "starter": false,
+                    "advanced": true,
+                    "enterprise": true
+                },
+                {
+                    "name": "Dedicated Manager",
+                    "starter": false,
+                    "advanced": false,
+                    "enterprise": true
+                },
+                {
+                    "name": "SLA Guarantee",
+                    "starter": false,
+                    "advanced": false,
+                    "enterprise": true
+                }
+            ]
+        }
+    ]
+}

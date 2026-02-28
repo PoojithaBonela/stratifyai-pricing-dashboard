@@ -1,0 +1,176 @@
+{
+    "plans": [
+        {
+            "id": "starter",
+            "name": "Starter",
+            "description": "For individual founders testing strategy decisions",
+            "monthlyPrice": 1499,
+            "yearlyPrice": 1199,
+            "recommended": false,
+            "simulationLimit": "15",
+            "scenarioComparisonLimit": "2",
+            "buttonText": "Start Modeling",
+            "features": [
+                {
+                    "title": "Strategic Simulation Core",
+                    "items": [
+                        {
+                            "text": "Strategy Simulation Engine"
+                        },
+                        {
+                            "text": "Revenue Forecasting"
+                        },
+                        {
+                            "text": "Risk Scoring"
+                        },
+                        {
+                            "text": "Scenario Comparison (Up to {{scenarioComparisonLimit}})"
+                        },
+                        {
+                            "text": "Interactive Charts"
+                        },
+                        {
+                            "text": "{{simulationLimit}} Simulations per Month"
+                        },
+                        {
+                            "text": "7-Day Scenario History"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "advanced",
+            "name": "Advanced",
+            "description": "For growing startups and business teams",
+            "monthlyPrice": 4999,
+            "yearlyPrice": 3999,
+            "recommended": true,
+            "simulationLimit": "100",
+            "scenarioComparisonLimit": "5",
+            "buttonText": "Upgrade Strategy",
+            "highlighted": true,
+            "features": [
+                {
+                    "title": "Strategic Simulation Core",
+                    "items": [
+                        {
+                            "text": "Strategy Simulation Engine"
+                        },
+                        {
+                            "text": "Revenue Forecasting"
+                        },
+                        {
+                            "text": "Advanced Risk Scoring"
+                        },
+                        {
+                            "text": "Scenario Comparison (Up to {{scenarioComparisonLimit}})"
+                        },
+                        {
+                            "text": "Advanced Charts"
+                        },
+                        {
+                            "text": "{{simulationLimit}} Simulations per Month"
+                        },
+                        {
+                            "text": "30-Day Scenario History"
+                        }
+                    ]
+                },
+                {
+                    "title": "Intelligence Layer",
+                    "items": [
+                        {
+                            "text": "Growth Probability Model"
+                        },
+                        {
+                            "text": "Dynamic Sensitivity Analysis"
+                        },
+                        {
+                            "text": "AI Strategy Summary Cards"
+                        },
+                        {
+                            "text": "Risk Heatmap"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "enterprise",
+            "name": "Enterprise",
+            "description": "For scaling companies and enterprises",
+            "monthlyPrice": 12999,
+            "yearlyPrice": 10399,
+            "recommended": false,
+            "simulationLimit": "Unlimited",
+            "scenarioComparisonLimit": "Unlimited",
+            "buttonText": "Contact Sales",
+            "features": [
+                {
+                    "title": "Strategic Simulation Core",
+                    "items": [
+                        {
+                            "text": "Strategy Simulation Engine"
+                        },
+                        {
+                            "text": "Revenue Forecasting"
+                        },
+                        {
+                            "text": "Advanced Risk Scoring"
+                        },
+                        {
+                            "text": "Scenario Comparison (Up to {{scenarioComparisonLimit}})"
+                        },
+                        {
+                            "text": "Advanced Dashboards"
+                        },
+                        {
+                            "text": "{{simulationLimit}} Simulations per Month"
+                        },
+                        {
+                            "text": "Unlimited Scenario History"
+                        }
+                    ]
+                },
+                {
+                    "title": "Intelligence Layer",
+                    "items": [
+                        {
+                            "text": "Growth Probability Model"
+                        },
+                        {
+                            "text": "Advanced Sensitivity Analysis"
+                        },
+                        {
+                            "text": "AI Strategy Summary Cards"
+                        },
+                        {
+                            "text": "Risk Heatmap"
+                        }
+                    ]
+                },
+                {
+                    "title": "Enterprise Strategy Suite",
+                    "items": [
+                        {
+                            "text": "AI Strategic Recommendations"
+                        },
+                        {
+                            "text": "Multi-Market Simulation"
+                        },
+                        {
+                            "text": "Team Collaboration"
+                        },
+                        {
+                            "text": "API Access"
+                        },
+                        {
+                            "text": "Dedicated Support"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
