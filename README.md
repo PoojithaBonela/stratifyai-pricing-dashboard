@@ -5,9 +5,6 @@ A responsive single-page pricing dashboard. The project is themed around a ficti
 
 **Live Demo:** [stratifyai.vercel.app](https://stratifyai-pricing-dashboard.vercel.app/)
 ---
-
-## How Requirements Were Satisfied
-
 ### Data Requirements
 
 - All pricing data is stored externally in `public/pricingData.json`
@@ -113,6 +110,13 @@ The UI is tested across desktop and mobile viewport widths.
 - Responsive layout with Tailwind CSS
 - Intersection Observer for scroll effects
 
+---
+## Design Trade-Offs
+
+- **Using JSON files instead of a backend:** Makes the app simple and easy to manage, but data is not real-time or stored permanently.
+- **Using only React state (no Redux):** Keeps the project clean and less complex, but may be harder to manage if the app becomes very large.
+- **Doing currency conversion on the frontend:** Prices update instantly, but exchange rates are not live or automatically updated.
+- **Using Tailwind CSS for styling:** Faster to build and keeps design consistent, but the JSX code has many utility class names.
 ---
 
 ## Running the Project
